@@ -22,3 +22,4 @@ Route::get('/download', 'OrderController@downloadExcel')->name('downloadExcel');
 Route::post('/import', 'OrderController@importExcel')->name('importExcel');
 Route::get('/ajaxSearch', 'OrderController@search')->name('search');
 Route::get('/search', 'OrderController@realSearch')->name('realsearch');
+Route::post('/month', 'MonthController@store')->name('month');

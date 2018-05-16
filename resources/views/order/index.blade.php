@@ -7,7 +7,11 @@
                    <thead>
                         <tr>
                             @foreach($statuses as $status)
-                                <th class="@if(app('request')->input('status') == $status->id) active @endif"><a class="btn main-buttons" href="{{ route('realsearch', ['status' => $status->id]) }}">{{ $status->name }}</a></th>
+                                <th class="@if(app('request')->input('status') == $status->id) active @endif">
+                                    <a class="btn main-buttons" href="{{ route('realsearch', ['status' => $status->id]) }}">
+                                        {{ $status->name }}
+                                    </a>
+                                </th>
                             @endforeach
                         </tr>
                    </thead>
@@ -26,6 +30,8 @@
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Product</th>
+                        <th>Specific</th>
+                        <th>note</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -44,18 +50,20 @@
                             <td>{{ $order->quantity }}</td>
                             <td>{{ $order->price }}</td>
                             <td>{{ $order->product }}</td>
+                            <td>{{ $order->specific }}</td>
+                            <td>{{ $order->note }}</td>
                             <td>
                                 @if($order->status)
                                     {{ $order->status->name }}
                                 @endif
                             </td>
-                            <td>
+                            <td class="actions">
                                 <div class="btn-group">
                                     <a href="{{ route('orders.show', $order->id ) }}">
                                         <i class="fa fa-eye"></i></a>
-                                    <a href="{{ route('orders.edit', $order->id) }}">
+                                    <a class="color-dark" href="{{ route('orders.edit', $order->id) }}">
                                         <i class="fa fa-edit"></i></a>
-                                    <form action="{{ URL::route('orders.destroy', $order->id) }}" method="POST">
+                                    <form action="{{ URL::route('orders.destroy', $order->id) }}" method="POST"  onsubmit="return confirm('Do you really want to delete this order?');">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button> <i class="fa fa-trash"></i></button>
@@ -73,17 +81,18 @@
                         <th colspan="5">{{ $orders->appends(request()->query())->links() }}</th>
                     </tr>
                     <tr>
-                        {{--<th> <a class="btn btn-primary" href="{{ route('importExcel') }}">Import from excel file</a></th>--}}
-
-                        <th colspan="5"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <th><a class="btn btn-primary import-export" href="{{ route('orders.create') }}">
+                                <i class="fa fa-plus-circle"></i>
+                            </a> </th>
+                        <th colspan="5">
+                            <button type="button" class="btn btn-primary import-export" data-toggle="modal" data-target="#exampleModal">
                                 Import from excel file
                             </button>
                         </th>
                         <th colspan="5">
-                            <a class="btn btn-primary" href="{{ route('downloadExcel') }}">Export to excel file</a></th>
+                            <a class="btn btn-primary import-export" href="{{ route('downloadExcel') }}">Export to excel file</a></th>
                         </th>
                     </tr>
-
                     </tfoot>
                 </table>
             </div>

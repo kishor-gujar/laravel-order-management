@@ -4,7 +4,6 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Order::class, function (Faker $faker) {
     $statuses = \App\Status::pluck('id')->toArray();
-    $status = ['Confirmed', 'Shipped', 'Delivered', 'Returned', 'Canceled'];
     return [
         'name' => $faker->name(),
         'phone' => $faker->phoneNumber,
@@ -16,9 +15,8 @@ $factory->define(App\Order::class, function (Faker $faker) {
         'product' => $faker->randomElement(['TV', 'Car', 'Games', 'AC']),
         'specific' => $faker->word,
         'note' => $faker->sentence(),
-//        'status' => $faker->randomElement($status),
         'status_id' => $faker->randomElement($statuses),
-        'date' => $faker->date()
+        'date' => $faker->dateTimeBetween('2018-1-1', '2018-12-30')
     ];
 });
 

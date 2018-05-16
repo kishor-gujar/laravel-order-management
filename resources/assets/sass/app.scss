@@ -1,6 +1,7 @@
 @import "~font-awesome/scss/font-awesome.scss";
 @import "~admin-lte/dist/css/adminlte.css";
-@import "~datatables-bootstrap/css/dataTables.bootstrap";
+
+@import "~admin-lte/plugins/datatables/dataTables.bootstrap4";
 
 .card {
   overflow-x: scroll;
@@ -15,5 +16,35 @@
   .main-buttons{
     color: #fff; width: 100%;
   }
+}
 
+.month-settings{
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.import-export, .import-export:active, .import-export:focus, .import-export:hover, .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited
+{
+  background: #2dce71;
+  border: #2dce71;
+  color: white;
+}
+
+.actions {
+  button {
+    background: none;
+    border: navajowhite;
+    color: red;
+    cursor: pointer;
+  }
+  a, button{
+    padding: 5px;
+    margin:5px;
+    font-size: 1.5em;
+  }
+  .color-dark {
+    color: #000000;
+  }
 }

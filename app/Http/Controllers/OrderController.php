@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\OrdersExport;
+use App\Month;
 use App\Order;
 use App\Status;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
-use Maatwebsite\Excel\Excel;
+use Illuminate\Support\Facades\View;
 use Rap2hpoutre\FastExcel\FastExcel;
 
 class OrderController extends Controller
 {
+    protected $months;
+
+    public function  __construct()
+    {
+        $this->middleware('auth');
+
+        $this->months = Month::all();
+        View::share('months', $this->months);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +41,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $statuses = Status::all();
+        return view('order.create', compact( 'statuses'));
     }
 
     /**
@@ -173,7 +183,9 @@ class OrderController extends Controller
                             <td>{$order->quantity}</td>
                             <td>{$order->price}</td>
                             <td>{$order->product}</td>
-                            <td>{$order->status->name}</td>                            
+                            <td>{$order->specific}</td>
+                            <td>{$order->note}</td>
+                            <td>{$order->status->name}</td>
                             </tr>";
                 }
                 return $output;
@@ -184,7 +196,7 @@ class OrderController extends Controller
     }
 
     public function realSearch(Request $request) {
-        if ($request->search || $request->status) {
+        if ($request->search || $request->status || $request->month) {
             $statuses = Status::all();
         }
         if ($request->search){
@@ -202,6 +214,14 @@ class OrderController extends Controller
             $orders = Order::where('status_id', $request->status)->paginate(15);
             return view('order.index', compact('orders', 'statuses'));
         }
+        elseif ($request->month) {
+            $orders = Order::whereMonth('date', $request->month)
+                ->whereYear('date', Carbon::now()->year)->paginate(15);
+//            dd($orders);
+            return view('order.index', compact('orders', 'statuses'));
+        }
+
+        return back();
     }
 }
 

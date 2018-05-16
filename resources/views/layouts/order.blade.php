@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Tracking System') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -31,7 +31,33 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('orders.index') }}" class="nav-link">Dashboard</a>
             </li>
+        </ul>
+        <!-- Right navbar links -->
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @guest
+            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
 
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+                @endguest
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -51,15 +77,22 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                  <h5 class="mb-3" style="color: #fff; text-decoration: underline;">Months list</h5>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-th"></i>
-                            <p>
-                                May 2018
-                            </p>
-                        </a>
-                    </li>
+                  <h5 class="mb-3" style="color: #fff; text-decoration: underline;">Months list
+                      <button type="button" class="pull-right month-settings"  data-toggle="modal" data-target="#months">
+                          <i class="fa fa-cog"></i>
+                      </button></h5>
+                    @foreach($months as $month)
+                        @if($month->status == 1)
+                            <li class="nav-item">
+                                <a href="{{ route('realsearch', ['month' => $month->id]) }}" class="nav-link @if(app('request')->input('month') == $month->id) active @endif">
+                                    <i class="nav-icon fa fa-th"></i>
+                                    <p>
+                                        {{ $month->name }} {{ \Carbon\Carbon::now()->year }}
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -107,6 +140,37 @@
     </div>
     <!-- /.content-wrapper -->
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="months" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" action="{{ route('month') }}">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Select months to display</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   @foreach($months as $month)
+                        <div class="">
+                            <label for="recipient-name" class="form-check-label">
+                                <input name="month[{{ $month->id }}]" type="checkbox" @if($month->status == 1) checked @endif>
+                                {{ $month->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <!-- ./wrapper -->
 

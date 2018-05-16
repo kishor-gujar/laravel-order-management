@@ -37,13 +37,24 @@
                 <tr>
                     <th>Quantity:</th>
                     <td>{{ $order->quantity }}</td>
-                </tr> <tr>
+                </tr>
+                <tr>
                     <th>Price:</th>
                     <td>{{ $order->price }}</td>
-                </tr> <tr>
+                </tr>
+                <tr>
                     <th>Product:</th>
                     <td>{{ $order->product }}</td>
-                </tr> <tr>
+                </tr>
+                <tr>
+                    <th>Specific:</th>
+                    <td>{{ $order->specific }}</td>
+                </tr>
+                <tr>
+                    <th>note:</th>
+                    <td>{{ $order->note }}</td>
+                </tr>
+                <tr>
                     <th>Order Status:</th>
                     <td>{{ $order->status->name }}</td>
                 </tr>

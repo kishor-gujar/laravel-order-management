@@ -8,7 +8,8 @@
 // require('jquery');
 require('./bootstrap');
 require('admin-lte');
-require('datatables-bootstrap');
+require('./jquery.dataTables');
+require('./dataTables.bootstrap4');
 // window.Vue = require('vue');
 
 /**
