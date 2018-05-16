@@ -16,5 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('orders', 'OrderController');
+Route::get('/download', 'OrderController@downloadExcel')->name('downloadExcel');
+Route::post('/import', 'OrderController@importExcel')->name('importExcel');
+Route::get('/ajaxSearch', 'OrderController@search')->name('search');
+Route::get('/search', 'OrderController@realSearch')->name('realsearch');

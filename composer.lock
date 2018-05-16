@@ -4,8 +4,76 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
+    "content-hash": "4df836075f47dd983b93956b819a4a03",
     "packages": [
+        {
+            "name": "box/spout",
+            "version": "v2.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/box/spout.git",
+                "reference": "3681a3421a868ab9a65da156c554f756541f452b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/box/spout/zipball/3681a3421a868ab9a65da156c554f756541f452b",
+                "reference": "3681a3421a868ab9a65da156c554f756541f452b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xmlreader": "*",
+                "ext-zip": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.0"
+            },
+            "suggest": {
+                "ext-iconv": "To handle non UTF-8 CSV files (if \"php-intl\" is not already installed or is too limited)",
+                "ext-intl": "To handle non UTF-8 CSV files (if \"iconv\" is not already installed)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Box\\Spout\\": "src/Spout"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Adrien Loison",
+                    "email": "adrien@box.com"
+                }
+            ],
+            "description": "PHP Library to read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way",
+            "homepage": "https://www.github.com/box/spout",
+            "keywords": [
+                "OOXML",
+                "csv",
+                "excel",
+                "memory",
+                "odf",
+                "ods",
+                "office",
+                "open",
+                "php",
+                "read",
+                "scale",
+                "spreadsheet",
+                "stream",
+                "write",
+                "xlsx"
+            ],
+            "time": "2017-09-25T19:44:35+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -740,6 +808,69 @@
             "time": "2018-05-07T08:44:23+00:00"
         },
         {
+            "name": "maatwebsite/excel",
+            "version": "3.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
+                "reference": "c450078854ad7a9441089e8131092a691b92a6aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/c450078854ad7a9441089e8131092a691b92a6aa",
+                "reference": "c450078854ad7a9441089e8131092a691b92a6aa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5",
+                "php": "^7.0",
+                "phpoffice/phpspreadsheet": "^1.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.6",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Maatwebsite\\Excel\\ExcelServiceProvider"
+                    ],
+                    "aliases": {
+                        "Excel": "Maatwebsite\\Excel\\Facades\\Excel"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Maatwebsite\\Excel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Patrick Brouwers",
+                    "email": "patrick@maatwebsite.nl"
+                }
+            ],
+            "description": "An eloquent way of importing and exporting Excel and CSV",
+            "keywords": [
+                "PHPExcel",
+                "batch",
+                "csv",
+                "excel",
+                "export",
+                "import",
+                "laravel",
+                "php",
+                "phpspreadsheet"
+            ],
+            "time": "2018-04-30T18:45:23+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.23.0",
             "source": {
@@ -968,6 +1099,92 @@
                 "random"
             ],
             "time": "2018-04-04T21:24:14+00:00"
+        },
+        {
+            "name": "phpoffice/phpspreadsheet",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
+                "reference": "36acc372875c4d894dc093825ce4f62209db5a76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/36acc372875c4d894dc093825ce4f62209db5a76",
+                "reference": "36acc372875c4d894dc093825ce4f62209db5a76",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-dom": "*",
+                "ext-gd": "*",
+                "ext-iconv": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "ext-xml": "*",
+                "ext-xmlreader": "*",
+                "ext-xmlwriter": "*",
+                "ext-zip": "*",
+                "ext-zlib": "*",
+                "php": "^5.6|^7.0",
+                "psr/simple-cache": "^1.0"
+            },
+            "require-dev": {
+                "dompdf/dompdf": "^0.8.0",
+                "friendsofphp/php-cs-fixer": "@stable",
+                "jpgraph/jpgraph": "^4.0",
+                "mpdf/mpdf": "^7.0.0",
+                "phpunit/phpunit": "^5.7",
+                "squizlabs/php_codesniffer": "^2.7",
+                "tecnickcom/tcpdf": "^6.2"
+            },
+            "suggest": {
+                "dompdf/dompdf": "Option for rendering PDF with PDF Writer",
+                "jpgraph/jpgraph": "Option for rendering charts, or including charts with PDF or HTML Writers",
+                "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
+                "tecnick.com/tcpdf": "Option for rendering PDF with PDF Writer"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpOffice\\PhpSpreadsheet\\": "src/PhpSpreadsheet"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Erik Tilt"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://rootslabs.net"
+                },
+                {
+                    "name": "Mark Baker",
+                    "homepage": "http://markbakeruk.net"
+                }
+            ],
+            "description": "PHPSpreadsheet - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "https://github.com/PHPOffice/PhpSpreadsheet",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "gnumeric",
+                "ods",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2018-04-10T03:53:16+00:00"
         },
         {
             "name": "psr/container",
@@ -1264,6 +1481,53 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "rap2hpoutre/fast-excel",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rap2hpoutre/fast-excel.git",
+                "reference": "83b2d15d0290858bff4c62b51d0eb5f6eff75dbd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/83b2d15d0290858bff4c62b51d0eb5f6eff75dbd",
+                "reference": "83b2d15d0290858bff4c62b51d0eb5f6eff75dbd",
+                "shasum": ""
+            },
+            "require": {
+                "box/spout": "^2.7",
+                "illuminate/database": "5.3.* || 5.4.* || 5.5.* || 5.6.*",
+                "illuminate/support": "5.3.* || 5.4.* || 5.5.* || 5.6.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rap2hpoutre\\FastExcel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rap2h",
+                    "email": "raphaelht@gmail.com"
+                }
+            ],
+            "keywords": [
+                "csv",
+                "excel",
+                "laravel",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2018-05-07T20:16:33+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

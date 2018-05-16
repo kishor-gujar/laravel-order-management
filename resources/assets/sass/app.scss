@@ -1,14 +1,19 @@
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~admin-lte/dist/css/adminlte.css";
+@import "~datatables-bootstrap/css/dataTables.bootstrap";
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+.card {
+  overflow-x: scroll;
+}
+.main-buttons{
+  color: #000; width: 100%;
+}
 
-// Variables
-@import "variables";
+.active {
+  background: #02a8f4;
+  color: #FFFFFF;
+  .main-buttons{
+    color: #fff; width: 100%;
+  }
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
