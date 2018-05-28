@@ -66,9 +66,9 @@
                                     <span class="text-danger">{{ $errors->first('price') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" value="{{ $order->name }}"  class="form-control" placeholder="Enter state name">
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    <label for="name">Date</label>
+                                    <input type="text" name="date" value="{{ $order->date }}"  class="form-control" placeholder="Enter state date">
+                                    <span class="text-danger">{{ $errors->first('date') }}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Product</label>
@@ -86,13 +86,13 @@
                                     <span class="text-danger">{{ $errors->first('note') }}</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Status</label>
+                                    <label for="status_id">Status</label>
                                     <select name="status_id" class="form-control">
                                         @foreach($statuses as $status)
                                             <option value="{{ $status->id }}" @if($status->id == $order->status_id) selected @endif>{{ $status->name }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    <span class="text-danger">{{ $errors->first('status_id') }}</span>
                                 </div>
                             </div>
                             <!-- /.card-body -->

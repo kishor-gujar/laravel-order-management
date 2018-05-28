@@ -53,7 +53,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'town' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'product' => 'required',
+            'specific' => '',
+            'note' => '',
+            'status_id' => 'required',
+            'date' => 'required'
+        ]);
+
+       $order = new Order($request->all());
+        \Session::flash('alert-success','Order inserted successfully.');
+       $order->save();
+       return redirect()->route('orders.index');
     }
 
     /**
@@ -100,6 +118,7 @@ class OrderController extends Controller
             'specific' => '',
             'note' => '',
             'status_id' => 'required',
+            'date' => 'required'
         ]);
         $order = Order::find($order->id);
         $order->name = $request->name;
@@ -114,6 +133,7 @@ class OrderController extends Controller
         $order->specific = $request->specific;
         $order->note = $request->note;
         $order->save();
+        \Session::flash('alert-success','Data updated successfully.');
         return redirect()->back();
     }
 
@@ -126,6 +146,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
+        \Session::flash('alert-success','Order deleted successfully.');
         return redirect()->back();
     }
 

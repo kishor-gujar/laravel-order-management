@@ -55,6 +55,10 @@
                     <td>{{ $order->note }}</td>
                 </tr>
                 <tr>
+                    <th>Date:</th>
+                    <td>{{ $order->date }}</td>
+                </tr>
+                <tr>
                     <th>Order Status:</th>
                     <td>{{ $order->status->name }}</td>
                 </tr>
